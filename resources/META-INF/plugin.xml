@@ -1,3 +1,12 @@
 <idea-plugin>
-    <id>org.mustbe.consulo.aspnet</id>
+	<id>org.mustbe.consulo.aspnet</id>
+	<name>ASP .NET 4</name>
+	<version>SNAPSHOT</version>
+	<vendor>Must-Be.org</vendor>
+	<category>Web Frameworks</category>
+	<depends>org.mustbe.consulo.dotnet.core</depends>
+
+	<extensions defaultExtensionNs="com.intellij">
+		<sdkType implementation="org.mustbe.consulo.aspnet.bundle.IISExpressBundleType" />
+	</extensions>
 </idea-plugin>
