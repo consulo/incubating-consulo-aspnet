@@ -5,8 +5,11 @@
 	<vendor>Must-Be.org</vendor>
 	<category>Web Frameworks</category>
 	<depends>org.mustbe.consulo.dotnet.core</depends>
+	<depends config-file="microsoft-dotnet.xml" optional="true">org.mustbe.consulo.dotnet.microsoft</depends>
 
 	<extensions defaultExtensionNs="com.intellij">
 		<sdkType implementation="org.mustbe.consulo.aspnet.bundle.IISExpressBundleType" />
+
+		<configurationType implementation="org.mustbe.consulo.aspnet.module.run.AspNetConfigurationType" />
 	</extensions>
 </idea-plugin>

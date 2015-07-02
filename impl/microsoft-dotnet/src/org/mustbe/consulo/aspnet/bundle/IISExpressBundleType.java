@@ -36,6 +36,12 @@ import com.intellij.openapi.util.io.FileUtil;
 public class IISExpressBundleType extends SdkType
 {
 	@NotNull
+	public static IISExpressBundleType getInstance()
+	{
+		return EP_NAME.findExtension(IISExpressBundleType.class);
+	}
+
+	@NotNull
 	public static String getExecutable(@NotNull String homePath)
 	{
 		return homePath + "/iisexpress.exe";

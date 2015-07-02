@@ -16,17 +16,28 @@
 
 package org.mustbe.consulo.aspnet.module.extension;
 
+import java.util.Collections;
 import java.util.List;
 
-import org.consulo.module.extension.ModuleExtension;
+import org.consulo.module.extension.impl.ModuleExtensionImpl;
 import org.jetbrains.annotations.NotNull;
+import com.intellij.openapi.roots.ModuleRootLayer;
 
 /**
  * @author VISTALL
  * @since 02.07.2015
  */
-public interface AspNetModuleExtension<T extends ModuleExtension<T>> extends ModuleExtension<T>
+public class MonoAspNetModuleExtension extends ModuleExtensionImpl<MonoAspNetModuleExtension> implements AspNetModuleExtension<MonoAspNetModuleExtension>
 {
+	public MonoAspNetModuleExtension(@NotNull String id, @NotNull ModuleRootLayer moduleRootLayer)
+	{
+		super(id, moduleRootLayer);
+	}
+
 	@NotNull
-	List<AspNetServerBundle> getBundles();
+	@Override
+	public List<AspNetServerBundle> getBundles()
+	{
+		return Collections.emptyList();
+	}
 }

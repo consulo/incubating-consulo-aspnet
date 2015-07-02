@@ -16,17 +16,12 @@
 
 package org.mustbe.consulo.aspnet.module.extension;
 
-import java.util.List;
-
-import org.consulo.module.extension.ModuleExtension;
-import org.jetbrains.annotations.NotNull;
+import org.consulo.module.extension.MutableModuleExtension;
 
 /**
  * @author VISTALL
  * @since 02.07.2015
  */
-public interface AspNetModuleExtension<T extends ModuleExtension<T>> extends ModuleExtension<T>
+public interface AspNetMutableModuleExtension<T extends AspNetModuleExtension<T>> extends MutableModuleExtension<T>
 {
-	@NotNull
-	List<AspNetServerBundle> getBundles();
 }

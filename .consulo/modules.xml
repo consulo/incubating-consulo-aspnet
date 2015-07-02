@@ -43,6 +43,7 @@
               </binaries>
             </library>
           </orderEntry>
+          <orderEntry type="module" module-name="consulo-aspnet" />
         </module-layer>
       </module>
       <module name="mono-dotnet" dirurl="file://$PROJECT_DIR$/impl/mono-dotnet" current-layer="Default">
@@ -73,6 +74,7 @@
               </binaries>
             </library>
           </orderEntry>
+          <orderEntry type="module" module-name="consulo-aspnet" />
         </module-layer>
       </module>
     </modules>

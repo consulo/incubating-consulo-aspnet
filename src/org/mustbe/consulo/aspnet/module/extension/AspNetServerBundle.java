@@ -16,17 +16,36 @@
 
 package org.mustbe.consulo.aspnet.module.extension;
 
-import java.util.List;
+import javax.swing.Icon;
 
-import org.consulo.module.extension.ModuleExtension;
 import org.jetbrains.annotations.NotNull;
+import com.intellij.execution.configurations.GeneralCommandLine;
+import com.intellij.openapi.module.Module;
 
 /**
  * @author VISTALL
  * @since 02.07.2015
  */
-public interface AspNetModuleExtension<T extends ModuleExtension<T>> extends ModuleExtension<T>
+public abstract class AspNetServerBundle
 {
-	@NotNull
-	List<AspNetServerBundle> getBundles();
+	private Icon myIcon;
+	private String myName;
+
+	public AspNetServerBundle(Icon icon, String name)
+	{
+		myIcon = icon;
+		myName = name;
+	}
+
+	public abstract GeneralCommandLine createCommandLine(@NotNull Module module);
+
+	public Icon getIcon()
+	{
+		return myIcon;
+	}
+
+	public String getName()
+	{
+		return myName;
+	}
 }
