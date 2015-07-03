@@ -16,31 +16,41 @@
 
 package org.mustbe.consulo.aspnet.module.extension;
 
-import java.util.Arrays;
-import java.util.List;
+import javax.swing.JComponent;
 
-import org.consulo.module.extension.impl.ModuleExtensionImpl;
 import org.jetbrains.annotations.NotNull;
-import org.mustbe.consulo.dotnet.module.extension.DotNetModuleExtension;
-import com.intellij.openapi.projectRoots.Sdk;
+import org.jetbrains.annotations.Nullable;
+import org.mustbe.consulo.RequiredDispatchThread;
 import com.intellij.openapi.roots.ModuleRootLayer;
 
 /**
  * @author VISTALL
- * @since 02.07.2015
+ * @since 03.07.2015
  */
-public class MonoAspNetModuleExtension extends ModuleExtensionImpl<MonoAspNetModuleExtension> implements AspNetModuleExtension<MonoAspNetModuleExtension>
+public class MonoAspNetMutableModuleExtension extends MonoAspNetModuleExtension implements AspNetMutableModuleExtension<MonoAspNetModuleExtension>
 {
-	public MonoAspNetModuleExtension(@NotNull String id, @NotNull ModuleRootLayer moduleRootLayer)
+	public MonoAspNetMutableModuleExtension(@NotNull String id, @NotNull ModuleRootLayer moduleRootLayer)
 	{
 		super(id, moduleRootLayer);
 	}
 
-	@NotNull
+	@RequiredDispatchThread
+	@Nullable
 	@Override
-	public List<AspNetServerBundle> getBundles(DotNetModuleExtension dotNetModuleExtension, Sdk sdk)
+	public JComponent createConfigurablePanel(@NotNull Runnable updateOnCheck)
 	{
-		AspNetServerBundle aspNetServerBundle = new XspServerBundle(sdk);
-		return Arrays.asList(aspNetServerBundle);
+		return null;
+	}
+
+	@Override
+	public void setEnabled(boolean val)
+	{
+		myIsEnabled = val;
+	}
+
+	@Override
+	public boolean isModified(@NotNull MonoAspNetModuleExtension originalExtension)
+	{
+		return myIsEnabled != originalExtension.isEnabled();
 	}
 }

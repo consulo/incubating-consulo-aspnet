@@ -19,6 +19,7 @@ package org.mustbe.consulo.aspnet.module.extension;
 import javax.swing.Icon;
 
 import org.jetbrains.annotations.NotNull;
+import com.intellij.execution.ExecutionException;
 import com.intellij.execution.configurations.GeneralCommandLine;
 import com.intellij.openapi.module.Module;
 
@@ -37,7 +38,7 @@ public abstract class AspNetServerBundle
 		myName = name;
 	}
 
-	public abstract GeneralCommandLine createCommandLine(@NotNull Module module);
+	public abstract GeneralCommandLine createCommandLine(@NotNull Module module) throws ExecutionException;
 
 	public Icon getIcon()
 	{

@@ -22,6 +22,7 @@ import java.util.List;
 import org.consulo.module.extension.impl.ModuleExtensionImpl;
 import org.jetbrains.annotations.NotNull;
 import org.mustbe.consulo.aspnet.bundle.IISExpressBundleType;
+import org.mustbe.consulo.dotnet.module.extension.DotNetModuleExtension;
 import com.intellij.openapi.projectRoots.Sdk;
 import com.intellij.openapi.projectRoots.SdkTable;
 import com.intellij.openapi.roots.ModuleRootLayer;
@@ -41,7 +42,7 @@ public class MicrosoftAspNetModuleExtension extends ModuleExtensionImpl<Microsof
 
 	@NotNull
 	@Override
-	public List<AspNetServerBundle> getBundles()
+	public List<AspNetServerBundle> getBundles(DotNetModuleExtension dotNetModuleExtension, Sdk t)
 	{
 		List<Sdk> sdksOfType = SdkTable.getInstance().getSdksOfType(IISExpressBundleType.getInstance());
 		List<AspNetServerBundle> list = new ArrayList<AspNetServerBundle>(sdksOfType.size());

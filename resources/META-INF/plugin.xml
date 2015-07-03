@@ -6,6 +6,7 @@
 	<category>Web Frameworks</category>
 	<depends>org.mustbe.consulo.dotnet.core</depends>
 	<depends config-file="microsoft-dotnet.xml" optional="true">org.mustbe.consulo.dotnet.microsoft</depends>
+	<depends config-file="mono-dotnet.xml" optional="true">org.mustbe.consulo.dotnet.mono</depends>
 
 	<extensions defaultExtensionNs="com.intellij">
 		<sdkType implementation="org.mustbe.consulo.aspnet.bundle.IISExpressBundleType" />

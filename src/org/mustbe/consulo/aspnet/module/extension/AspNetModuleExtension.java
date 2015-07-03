@@ -20,6 +20,8 @@ import java.util.List;
 
 import org.consulo.module.extension.ModuleExtension;
 import org.jetbrains.annotations.NotNull;
+import org.mustbe.consulo.dotnet.module.extension.DotNetModuleExtension;
+import com.intellij.openapi.projectRoots.Sdk;
 
 /**
  * @author VISTALL
@@ -28,5 +30,5 @@ import org.jetbrains.annotations.NotNull;
 public interface AspNetModuleExtension<T extends ModuleExtension<T>> extends ModuleExtension<T>
 {
 	@NotNull
-	List<AspNetServerBundle> getBundles();
+	List<AspNetServerBundle> getBundles(DotNetModuleExtension dotNetModuleExtension, Sdk sdk);
 }

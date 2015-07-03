@@ -25,6 +25,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.mustbe.consulo.aspnet.module.extension.AspNetModuleExtension;
 import org.mustbe.consulo.aspnet.module.extension.AspNetServerBundle;
+import org.mustbe.consulo.dotnet.module.extension.DotNetModuleExtension;
 import com.intellij.execution.ExecutionException;
 import com.intellij.execution.Executor;
 import com.intellij.execution.configurations.CommandLineState;
@@ -41,6 +42,7 @@ import com.intellij.openapi.module.ModuleManager;
 import com.intellij.openapi.module.ModuleUtilCore;
 import com.intellij.openapi.options.SettingsEditor;
 import com.intellij.openapi.options.SettingsEditorGroup;
+import com.intellij.openapi.projectRoots.Sdk;
 import com.intellij.openapi.util.InvalidDataException;
 import com.intellij.openapi.util.WriteExternalException;
 import com.intellij.util.xmlb.XmlSerializer;
@@ -113,6 +115,18 @@ public class AspNetConfiguration extends ModuleBasedConfiguration<RunConfigurati
 			throw new ExecutionException("Module is null");
 		}
 
+		DotNetModuleExtension dotNetModuleExtension = ModuleUtilCore.getExtension(module, DotNetModuleExtension.class);
+		if(dotNetModuleExtension == null)
+		{
+			throw new ExecutionException("Module don't have .NET extension");
+		}
+
+		Sdk sdk = dotNetModuleExtension.getSdk();
+		if(sdk == null)
+		{
+			throw new ExecutionException("Module don't have .NET SDK");
+		}
+
 		final AspNetModuleExtension<?> extension = ModuleUtilCore.getExtension(module, AspNetModuleExtension.class);
 
 		if(extension == null)
@@ -120,7 +134,7 @@ public class AspNetConfiguration extends ModuleBasedConfiguration<RunConfigurati
 			throw new ExecutionException("Module don't have ASP .NET extension");
 		}
 
-		final List<AspNetServerBundle> bundles = extension.getBundles();
+		final List<AspNetServerBundle> bundles = extension.getBundles(dotNetModuleExtension, sdk);
 		if(bundles.isEmpty())
 		{
 			throw new ExecutionException("No servers");
