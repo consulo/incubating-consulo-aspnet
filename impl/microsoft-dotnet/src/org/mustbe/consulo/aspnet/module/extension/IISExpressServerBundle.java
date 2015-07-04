@@ -46,6 +46,7 @@ public class IISExpressServerBundle extends AspNetServerBundle
 		commandLine.setWorkDirectory(mySdk.getHomePath());
 		commandLine.addParameter("/path:" + FileUtil.toSystemDependentName(module.getModuleDirPath()));
 		commandLine.addParameter("/port:8081");
+		commandLine.addParameter("/systray:false");
 		return commandLine;
 	}
 }
