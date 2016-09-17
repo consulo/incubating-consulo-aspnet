@@ -1,16 +1,16 @@
 <idea-plugin>
-	<id>org.mustbe.consulo.aspnet</id>
+	<id>consulo.aspnet</id>
 	<name>ASP .NET 4</name>
 	<version>SNAPSHOT</version>
-	<vendor>Must-Be.org</vendor>
+	<vendor>consulo.io</vendor>
 	<category>Web Frameworks</category>
-	<depends>org.mustbe.consulo.dotnet.core</depends>
-	<depends config-file="microsoft-dotnet.xml" optional="true">org.mustbe.consulo.dotnet.microsoft</depends>
-	<depends config-file="mono-dotnet.xml" optional="true">org.mustbe.consulo.dotnet.mono</depends>
+	<depends>consulo.dotnet</depends>
+	<depends config-file="consulo.dotnet.microsoft.xml" optional="true">consulo.dotnet.microsoft</depends>
+	<depends config-file="consulo.dotnet.mono.xml" optional="true">consulo.dotnet.mono</depends>
 
 	<extensions defaultExtensionNs="com.intellij">
-		<sdkType implementation="org.mustbe.consulo.aspnet.bundle.IISExpressBundleType" />
+		<sdkType implementation="consulo.aspnet.bundle.IISExpressBundleType" />
 
-		<configurationType implementation="org.mustbe.consulo.aspnet.module.run.AspNetConfigurationType" />
+		<configurationType implementation="consulo.aspnet.module.run.AspNetConfigurationType" />
 	</extensions>
 </idea-plugin>
