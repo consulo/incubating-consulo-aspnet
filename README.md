@@ -1,1 +1,1 @@
-![Build Status](http://must-be.org/vulcan/statusImage?name=_consulo-aspnet)
+[![Build Status](https://ci.consulo.io/job/consulo-aspnet/1140/badge/icon)](https://ci.consulo.io/job/consulo-aspnet/1140/)
