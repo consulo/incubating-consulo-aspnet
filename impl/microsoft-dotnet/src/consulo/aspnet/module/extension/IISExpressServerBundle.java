@@ -16,7 +16,8 @@
 
 package consulo.aspnet.module.extension;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
+
 import com.intellij.execution.configurations.GeneralCommandLine;
 import com.intellij.openapi.module.Module;
 import com.intellij.openapi.projectRoots.Sdk;
@@ -32,14 +33,14 @@ public class IISExpressServerBundle extends AspNetServerBundle
 {
 	private Sdk mySdk;
 
-	public IISExpressServerBundle(@NotNull Sdk sdk)
+	public IISExpressServerBundle(@Nonnull Sdk sdk)
 	{
 		super(((SdkType)sdk.getSdkType()).getIcon(), sdk.getSdkType().getName());
 		mySdk = sdk;
 	}
 
 	@Override
-	public GeneralCommandLine createCommandLine(@NotNull Module module)
+	public GeneralCommandLine createCommandLine(@Nonnull Module module)
 	{
 		GeneralCommandLine commandLine = new GeneralCommandLine();
 		commandLine.setExePath(IISExpressBundleType.getExecutable(mySdk.getHomePath()));

@@ -16,10 +16,10 @@
 
 package consulo.aspnet.module.run;
 
+import javax.annotation.Nonnull;
 import javax.swing.JComboBox;
 import javax.swing.JComponent;
 
-import org.jetbrains.annotations.NotNull;
 import consulo.aspnet.module.extension.AspNetModuleExtension;
 import com.intellij.application.options.ModuleListCellRenderer;
 import com.intellij.openapi.module.Module;
@@ -57,7 +57,7 @@ public class AspNetConfigurationEditor extends SettingsEditor<AspNetConfiguratio
 		runConfiguration.getConfigurationModule().setModule((Module) myModuleComboBox.getSelectedItem());
 	}
 
-	@NotNull
+	@Nonnull
 	@Override
 	@RequiredDispatchThread
 	protected JComponent createEditor()

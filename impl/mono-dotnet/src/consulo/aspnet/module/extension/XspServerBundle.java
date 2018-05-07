@@ -16,7 +16,8 @@
 
 package consulo.aspnet.module.extension;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
+
 import com.intellij.execution.ExecutionException;
 import com.intellij.execution.configurations.GeneralCommandLine;
 import com.intellij.openapi.module.Module;
@@ -33,14 +34,14 @@ public class XspServerBundle extends AspNetServerBundle
 {
 	private Sdk mySdk;
 
-	public XspServerBundle(@NotNull Sdk sdk)
+	public XspServerBundle(@Nonnull Sdk sdk)
 	{
 		super(MonoDotNetIcons.Mono, "XSP");
 		mySdk = sdk;
 	}
 
 	@Override
-	public GeneralCommandLine createCommandLine(@NotNull Module module) throws ExecutionException
+	public GeneralCommandLine createCommandLine(@Nonnull Module module) throws ExecutionException
 	{
 		GeneralCommandLine commandLine = MonoDotNetModuleExtension.createDefaultCommandLineImpl(mySdk, null, mySdk.getHomePath() + "/xsp4.exe");
 		commandLine.addParameter("--nonstop");

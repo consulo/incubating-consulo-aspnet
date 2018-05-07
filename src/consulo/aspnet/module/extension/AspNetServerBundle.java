@@ -16,9 +16,9 @@
 
 package consulo.aspnet.module.extension;
 
+import javax.annotation.Nonnull;
 import javax.swing.Icon;
 
-import org.jetbrains.annotations.NotNull;
 import com.intellij.execution.ExecutionException;
 import com.intellij.execution.configurations.GeneralCommandLine;
 import com.intellij.openapi.module.Module;
@@ -38,7 +38,7 @@ public abstract class AspNetServerBundle
 		myName = name;
 	}
 
-	public abstract GeneralCommandLine createCommandLine(@NotNull Module module) throws ExecutionException;
+	public abstract GeneralCommandLine createCommandLine(@Nonnull Module module) throws ExecutionException;
 
 	public Icon getIcon()
 	{

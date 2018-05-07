@@ -19,12 +19,13 @@ package consulo.aspnet.module.extension;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
+
 import com.intellij.openapi.projectRoots.Sdk;
 import com.intellij.openapi.projectRoots.SdkTable;
 import consulo.aspnet.bundle.IISExpressBundleType;
 import consulo.dotnet.module.extension.DotNetModuleExtension;
-import consulo.extension.impl.ModuleExtensionImpl;
+import consulo.module.extension.impl.ModuleExtensionImpl;
 import consulo.roots.ModuleRootLayer;
 
 /**
@@ -32,14 +33,13 @@ import consulo.roots.ModuleRootLayer;
  * @since 02.07.2015
  */
 public class MicrosoftAspNetModuleExtension extends ModuleExtensionImpl<MicrosoftAspNetModuleExtension> implements AspNetModuleExtension<MicrosoftAspNetModuleExtension>
-
 {
-	public MicrosoftAspNetModuleExtension(@NotNull String id, @NotNull ModuleRootLayer moduleRootLayer)
+	public MicrosoftAspNetModuleExtension(@Nonnull String id, @Nonnull ModuleRootLayer moduleRootLayer)
 	{
 		super(id, moduleRootLayer);
 	}
 
-	@NotNull
+	@Nonnull
 	@Override
 	public List<AspNetServerBundle> getBundles(DotNetModuleExtension dotNetModuleExtension, Sdk t)
 	{

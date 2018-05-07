@@ -20,9 +20,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import org.jdom.Element;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import consulo.aspnet.module.extension.AspNetModuleExtension;
 import consulo.aspnet.module.extension.AspNetServerBundle;
 import com.intellij.execution.ExecutionException;
@@ -81,7 +82,6 @@ public class AspNetConfiguration extends ModuleBasedConfiguration<RunConfigurati
 	public void readExternal(Element element) throws InvalidDataException
 	{
 		super.readExternal(element);
-		readModule(element);
 
 		XmlSerializer.deserializeInto(this, element);
 	}
@@ -90,12 +90,11 @@ public class AspNetConfiguration extends ModuleBasedConfiguration<RunConfigurati
 	public void writeExternal(Element element) throws WriteExternalException
 	{
 		super.writeExternal(element);
-		writeModule(element);
 
 		XmlSerializer.serializeInto(this, element);
 	}
 
-	@NotNull
+	@Nonnull
 	@Override
 	@SuppressWarnings("unchecked")
 	public SettingsEditor<? extends RunConfiguration> getConfigurationEditor()
@@ -107,7 +106,7 @@ public class AspNetConfiguration extends ModuleBasedConfiguration<RunConfigurati
 
 	@Nullable
 	@Override
-	public RunProfileState getState(@NotNull Executor executor, @NotNull final ExecutionEnvironment executionEnvironment) throws ExecutionException
+	public RunProfileState getState(@Nonnull Executor executor, @Nonnull final ExecutionEnvironment executionEnvironment) throws ExecutionException
 	{
 		final Module module = getConfigurationModule().getModule();
 		if(module == null)
@@ -142,7 +141,7 @@ public class AspNetConfiguration extends ModuleBasedConfiguration<RunConfigurati
 
 		return new CommandLineState(executionEnvironment)
 		{
-			@NotNull
+			@Nonnull
 			@Override
 			protected ProcessHandler startProcess() throws ExecutionException
 			{

@@ -18,7 +18,8 @@ package consulo.aspnet.module.extension;
 
 import java.util.List;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
+
 import com.intellij.openapi.projectRoots.Sdk;
 import consulo.dotnet.module.extension.DotNetModuleExtension;
 import consulo.module.extension.ModuleExtension;
@@ -29,6 +30,6 @@ import consulo.module.extension.ModuleExtension;
  */
 public interface AspNetModuleExtension<T extends ModuleExtension<T>> extends ModuleExtension<T>
 {
-	@NotNull
+	@Nonnull
 	List<AspNetServerBundle> getBundles(DotNetModuleExtension dotNetModuleExtension, Sdk sdk);
 }

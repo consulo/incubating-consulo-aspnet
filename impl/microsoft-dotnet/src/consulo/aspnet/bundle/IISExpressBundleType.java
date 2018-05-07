@@ -20,10 +20,10 @@ import java.io.File;
 import java.util.ArrayDeque;
 import java.util.Collection;
 
+import javax.annotation.Nonnull;
 import javax.swing.Icon;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nullable;
 import com.intellij.icons.AllIcons;
 import com.intellij.openapi.projectRoots.SdkType;
 import com.intellij.openapi.util.SystemInfo;
@@ -35,14 +35,14 @@ import com.intellij.openapi.util.io.FileUtil;
  */
 public class IISExpressBundleType extends SdkType
 {
-	@NotNull
+	@Nonnull
 	public static IISExpressBundleType getInstance()
 	{
 		return EP_NAME.findExtension(IISExpressBundleType.class);
 	}
 
-	@NotNull
-	public static String getExecutable(@NotNull String homePath)
+	@Nonnull
+	public static String getExecutable(@Nonnull String homePath)
 	{
 		return homePath + "/iisexpress.exe";
 	}
@@ -58,7 +58,7 @@ public class IISExpressBundleType extends SdkType
 		return true;
 	}
 
-	@NotNull
+	@Nonnull
 	@Override
 	public Collection<String> suggestHomePaths()
 	{
@@ -121,7 +121,7 @@ public class IISExpressBundleType extends SdkType
 		return builder.toString();
 	}
 
-	@NotNull
+	@Nonnull
 	@Override
 	public String getPresentableName()
 	{

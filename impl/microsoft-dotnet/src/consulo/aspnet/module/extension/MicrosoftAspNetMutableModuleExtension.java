@@ -16,10 +16,10 @@
 
 package consulo.aspnet.module.extension;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import javax.swing.JComponent;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import consulo.annotations.RequiredDispatchThread;
 import consulo.roots.ModuleRootLayer;
 
@@ -29,7 +29,7 @@ import consulo.roots.ModuleRootLayer;
  */
 public class MicrosoftAspNetMutableModuleExtension extends MicrosoftAspNetModuleExtension implements AspNetMutableModuleExtension<MicrosoftAspNetModuleExtension>
 {
-	public MicrosoftAspNetMutableModuleExtension(@NotNull String id, @NotNull ModuleRootLayer moduleRootLayer)
+	public MicrosoftAspNetMutableModuleExtension(@Nonnull String id, @Nonnull ModuleRootLayer moduleRootLayer)
 	{
 		super(id, moduleRootLayer);
 	}
@@ -37,7 +37,7 @@ public class MicrosoftAspNetMutableModuleExtension extends MicrosoftAspNetModule
 	@RequiredDispatchThread
 	@Nullable
 	@Override
-	public JComponent createConfigurablePanel(@NotNull Runnable updateOnCheck)
+	public JComponent createConfigurablePanel(@Nonnull Runnable updateOnCheck)
 	{
 		return null;
 	}
@@ -49,7 +49,7 @@ public class MicrosoftAspNetMutableModuleExtension extends MicrosoftAspNetModule
 	}
 
 	@Override
-	public boolean isModified(@NotNull MicrosoftAspNetModuleExtension originalExtension)
+	public boolean isModified(@Nonnull MicrosoftAspNetModuleExtension originalExtension)
 	{
 		return myIsEnabled != originalExtension.isEnabled();
 	}
