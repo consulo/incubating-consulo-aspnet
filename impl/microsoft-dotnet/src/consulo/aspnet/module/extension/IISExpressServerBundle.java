@@ -37,7 +37,7 @@ public class IISExpressServerBundle extends AspNetServerBundle
 
 	public IISExpressServerBundle(@Nonnull Sdk sdk)
 	{
-		super(TargetAWT.to(SdkUtil.getIcon(sdk)), sdk.getSdkType().getName());
+		super(SdkUtil.getIcon(sdk), sdk.getSdkType().getName());
 		mySdk = sdk;
 	}
 

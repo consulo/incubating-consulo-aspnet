@@ -17,11 +17,11 @@
 package consulo.aspnet.module.extension;
 
 import javax.annotation.Nonnull;
-import javax.swing.Icon;
 
 import com.intellij.execution.ExecutionException;
 import com.intellij.execution.configurations.GeneralCommandLine;
 import com.intellij.openapi.module.Module;
+import consulo.ui.image.Image;
 
 /**
  * @author VISTALL
@@ -29,10 +29,10 @@ import com.intellij.openapi.module.Module;
  */
 public abstract class AspNetServerBundle
 {
-	private Icon myIcon;
+	private Image myIcon;
 	private String myName;
 
-	public AspNetServerBundle(Icon icon, String name)
+	public AspNetServerBundle(Image icon, String name)
 	{
 		myIcon = icon;
 		myName = name;
@@ -40,7 +40,7 @@ public abstract class AspNetServerBundle
 
 	public abstract GeneralCommandLine createCommandLine(@Nonnull Module module) throws ExecutionException;
 
-	public Icon getIcon()
+	public Image getIcon()
 	{
 		return myIcon;
 	}
