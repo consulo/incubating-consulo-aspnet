@@ -24,6 +24,8 @@ import com.intellij.openapi.projectRoots.Sdk;
 import com.intellij.openapi.projectRoots.SdkType;
 import com.intellij.openapi.util.io.FileUtil;
 import consulo.aspnet.bundle.IISExpressBundleType;
+import consulo.awt.TargetAWT;
+import consulo.bundle.SdkUtil;
 
 /**
  * @author VISTALL
@@ -35,7 +37,7 @@ public class IISExpressServerBundle extends AspNetServerBundle
 
 	public IISExpressServerBundle(@Nonnull Sdk sdk)
 	{
-		super(((SdkType)sdk.getSdkType()).getIcon(), sdk.getSdkType().getName());
+		super(TargetAWT.to(SdkUtil.getIcon(sdk)), sdk.getSdkType().getName());
 		mySdk = sdk;
 	}
 
