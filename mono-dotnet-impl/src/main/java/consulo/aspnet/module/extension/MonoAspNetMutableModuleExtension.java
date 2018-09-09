@@ -16,12 +16,8 @@
 
 package consulo.aspnet.module.extension;
 
-import javax.annotation.Nullable;
-import javax.swing.JComponent;
-
 import javax.annotation.Nonnull;
 
-import consulo.annotations.RequiredDispatchThread;
 import consulo.roots.ModuleRootLayer;
 
 /**
@@ -33,14 +29,6 @@ public class MonoAspNetMutableModuleExtension extends MonoAspNetModuleExtension 
 	public MonoAspNetMutableModuleExtension(@Nonnull String id, @Nonnull ModuleRootLayer moduleRootLayer)
 	{
 		super(id, moduleRootLayer);
-	}
-
-	@RequiredDispatchThread
-	@Nullable
-	@Override
-	public JComponent createConfigurablePanel(@Nonnull Runnable updateOnCheck)
-	{
-		return null;
 	}
 
 	@Override

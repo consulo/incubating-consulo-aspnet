@@ -9,8 +9,6 @@
 	<depends config-file="consulo.dotnet.mono.xml" optional="true">consulo.dotnet.mono</depends>
 
 	<extensions defaultExtensionNs="com.intellij">
-		<sdkType implementation="consulo.aspnet.bundle.IISExpressBundleType" />
-
 		<configurationType implementation="consulo.aspnet.module.run.AspNetConfigurationType" />
 	</extensions>
 </idea-plugin>

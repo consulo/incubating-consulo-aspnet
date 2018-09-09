@@ -16,6 +16,8 @@
 
 <idea-plugin>
 	<extensions defaultExtensionNs="com.intellij">
+		<sdkType implementation="consulo.aspnet.bundle.IISExpressBundleType"/>
+
 		<moduleExtensionProvider key="microsoft-aspnet"
 								 parentKey="microsoft-dotnet"
 								 name="ASP .NET"
