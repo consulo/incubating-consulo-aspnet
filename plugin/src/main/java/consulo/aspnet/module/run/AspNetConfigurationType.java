@@ -16,8 +16,6 @@
 
 package consulo.aspnet.module.run;
 
-import javax.annotation.Nonnull;
-
 import com.intellij.execution.configuration.ConfigurationFactoryEx;
 import com.intellij.execution.configurations.ConfigurationTypeBase;
 import com.intellij.execution.configurations.RunConfiguration;
@@ -27,9 +25,11 @@ import com.intellij.openapi.module.Module;
 import com.intellij.openapi.module.ModuleManager;
 import com.intellij.openapi.module.ModuleUtilCore;
 import com.intellij.openapi.project.Project;
-import consulo.annotations.RequiredReadAction;
+import consulo.annotation.access.RequiredReadAction;
 import consulo.aspnet.module.extension.AspNetModuleExtension;
 import consulo.module.extension.ModuleExtensionHelper;
+
+import javax.annotation.Nonnull;
 
 /**
  * @author VISTALL

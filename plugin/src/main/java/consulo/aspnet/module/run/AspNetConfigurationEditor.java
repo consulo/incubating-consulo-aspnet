@@ -16,11 +16,6 @@
 
 package consulo.aspnet.module.run;
 
-import javax.annotation.Nonnull;
-import javax.swing.JComboBox;
-import javax.swing.JComponent;
-
-import consulo.aspnet.module.extension.AspNetModuleExtension;
 import com.intellij.application.options.ModuleListCellRenderer;
 import com.intellij.openapi.module.Module;
 import com.intellij.openapi.module.ModuleManager;
@@ -29,7 +24,11 @@ import com.intellij.openapi.options.ConfigurationException;
 import com.intellij.openapi.options.SettingsEditor;
 import com.intellij.openapi.project.Project;
 import com.intellij.util.ui.FormBuilder;
-import consulo.annotations.RequiredDispatchThread;
+import consulo.aspnet.module.extension.AspNetModuleExtension;
+import consulo.ui.annotation.RequiredUIAccess;
+
+import javax.annotation.Nonnull;
+import javax.swing.*;
 
 /**
  * @author VISTALL
@@ -59,7 +58,7 @@ public class AspNetConfigurationEditor extends SettingsEditor<AspNetConfiguratio
 
 	@Nonnull
 	@Override
-	@RequiredDispatchThread
+	@RequiredUIAccess
 	protected JComponent createEditor()
 	{
 		myModuleComboBox = new JComboBox();
