@@ -16,12 +16,13 @@
 
 package consulo.aspnet.module.extension;
 
-import consulo.roots.ModuleRootLayer;
-import consulo.ui.annotation.RequiredUIAccess;
-
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import javax.swing.*;
+
+import consulo.disposer.Disposable;
+import consulo.roots.ModuleRootLayer;
+import consulo.ui.Component;
+import consulo.ui.annotation.RequiredUIAccess;
 
 /**
  * @author VISTALL
@@ -37,7 +38,7 @@ public class MicrosoftAspNetMutableModuleExtension extends MicrosoftAspNetModule
 	@RequiredUIAccess
 	@Nullable
 	@Override
-	public JComponent createConfigurablePanel(@Nonnull Runnable updateOnCheck)
+	public Component createConfigurationComponent(@Nonnull Disposable disposable, @Nonnull Runnable runnable)
 	{
 		return null;
 	}
