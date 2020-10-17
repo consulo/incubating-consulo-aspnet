@@ -1,4 +1,4 @@
-<idea-plugin>
+<consulo-plugin>
 	<id>consulo.aspnet</id>
 	<name>ASP .NET 4</name>
 	<version>SNAPSHOT</version>
@@ -11,4 +11,4 @@
 	<extensions defaultExtensionNs="com.intellij">
 		<configurationType implementation="consulo.aspnet.module.run.AspNetConfigurationType" />
 	</extensions>
-</idea-plugin>
+</consulo-plugin>

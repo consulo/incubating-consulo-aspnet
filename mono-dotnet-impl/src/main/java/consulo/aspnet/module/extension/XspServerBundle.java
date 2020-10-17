@@ -16,15 +16,15 @@
 
 package consulo.aspnet.module.extension;
 
-import javax.annotation.Nonnull;
-
 import com.intellij.execution.ExecutionException;
 import com.intellij.execution.configurations.GeneralCommandLine;
 import com.intellij.openapi.module.Module;
 import com.intellij.openapi.projectRoots.Sdk;
 import com.intellij.openapi.util.text.StringUtil;
-import consulo.mono.dotnet.MonoDotNetIcons;
+import consulo.dotnet.mono.icon.MonoDotNetIconGroup;
 import consulo.mono.dotnet.module.extension.MonoDotNetModuleExtension;
+
+import javax.annotation.Nonnull;
 
 /**
  * @author VISTALL
@@ -36,7 +36,7 @@ public class XspServerBundle extends AspNetServerBundle
 
 	public XspServerBundle(@Nonnull Sdk sdk)
 	{
-		super(MonoDotNetIcons.Mono, "XSP");
+		super(MonoDotNetIconGroup.mono(), "XSP");
 		mySdk = sdk;
 	}
 

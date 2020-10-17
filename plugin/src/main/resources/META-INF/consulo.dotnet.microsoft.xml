@@ -14,15 +14,15 @@
   - limitations under the License.
   -->
 
-<idea-plugin>
+<consulo-plugin>
 	<extensions defaultExtensionNs="com.intellij">
 		<sdkType implementation="consulo.aspnet.bundle.IISExpressBundleType"/>
 
 		<moduleExtensionProvider key="microsoft-aspnet"
 								 parentKey="microsoft-dotnet"
 								 name="ASP .NET"
-								 icon="/providers/microsoft.png"
+								 icon="consulo.platform.base.PlatformIconGroup@providers.microsoft"
 								 immutableClass="consulo.aspnet.module.extension.MicrosoftAspNetModuleExtension"
 								 mutableClass="consulo.aspnet.module.extension.MicrosoftAspNetMutableModuleExtension" />
 	</extensions>
-</idea-plugin>
+</consulo-plugin>

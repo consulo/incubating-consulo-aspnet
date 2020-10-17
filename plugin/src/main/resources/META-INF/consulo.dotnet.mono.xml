@@ -14,13 +14,13 @@
   - limitations under the License.
   -->
 
-<idea-plugin>
+<consulo-plugin>
 	<extensions defaultExtensionNs="com.intellij">
 		<moduleExtensionProvider key="mono-aspnet"
 								 parentKey="mono-dotnet"
 								 name="ASP .NET"
-								 icon="/icons/mono.png"
+								 icon="consulo.dotnet.mono.MonoDotNetIconGroup@mono"
 								 immutableClass="consulo.aspnet.module.extension.MonoAspNetModuleExtension"
 								 mutableClass="consulo.aspnet.module.extension.MonoAspNetMutableModuleExtension" />
 	</extensions>
-</idea-plugin>
+</consulo-plugin>
