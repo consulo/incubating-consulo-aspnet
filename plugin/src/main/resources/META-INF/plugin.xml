@@ -5,6 +5,13 @@
 	<vendor>consulo.io</vendor>
 	<category>Web Frameworks</category>
 	<depends>consulo.dotnet</depends>
+	<experimental>true</experimental>
+	<tags>
+		<tag>web.framework</tag>
+		<tag>web.server</tag>
+		<tag>experimental</tag>
+	</tags>
+
 	<depends config-file="consulo.dotnet.microsoft.xml" optional="true">consulo.dotnet.microsoft</depends>
 	<depends config-file="consulo.dotnet.mono.xml" optional="true">consulo.dotnet.mono</depends>
 
