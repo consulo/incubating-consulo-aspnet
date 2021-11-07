@@ -9,7 +9,6 @@
 	<tags>
 		<tag>web.framework</tag>
 		<tag>web.server</tag>
-		<tag>experimental</tag>
 	</tags>
 
 	<depends config-file="consulo.dotnet.microsoft.xml" optional="true">consulo.dotnet.microsoft</depends>
