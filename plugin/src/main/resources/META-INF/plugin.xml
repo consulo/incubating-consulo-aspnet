@@ -1,4 +1,4 @@
-<consulo-plugin>
+<consulo-plugin url="https://github.com/consulo/incubating-consulo-aspnet">
 	<id>consulo.aspnet</id>
 	<name>ASP .NET 4</name>
 	<version>SNAPSHOT</version>
