@@ -14,25 +14,26 @@
  * limitations under the License.
  */
 
-package consulo.aspnet.module.extension;
+package consulo.aspnet.microsoft.module.extension;
 
-import java.util.ArrayList;
-import java.util.List;
+import consulo.aspnet.microsoft.bundle.IISExpressBundleType;
+import consulo.aspnet.module.extension.AspNetModuleExtension;
+import consulo.aspnet.module.extension.AspNetServerBundle;
+import consulo.content.bundle.Sdk;
+import consulo.content.bundle.SdkTable;
+import consulo.dotnet.module.extension.DotNetModuleExtension;
+import consulo.module.content.layer.ModuleRootLayer;
+import consulo.module.content.layer.extension.ModuleExtensionBase;
 
 import javax.annotation.Nonnull;
-
-import com.intellij.openapi.projectRoots.Sdk;
-import com.intellij.openapi.projectRoots.SdkTable;
-import consulo.aspnet.bundle.IISExpressBundleType;
-import consulo.dotnet.module.extension.DotNetModuleExtension;
-import consulo.module.extension.impl.ModuleExtensionImpl;
-import consulo.roots.ModuleRootLayer;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author VISTALL
  * @since 02.07.2015
  */
-public class MicrosoftAspNetModuleExtension extends ModuleExtensionImpl<MicrosoftAspNetModuleExtension> implements AspNetModuleExtension<MicrosoftAspNetModuleExtension>
+public class MicrosoftAspNetModuleExtension extends ModuleExtensionBase<MicrosoftAspNetModuleExtension> implements AspNetModuleExtension<MicrosoftAspNetModuleExtension>
 {
 	public MicrosoftAspNetModuleExtension(@Nonnull String id, @Nonnull ModuleRootLayer moduleRootLayer)
 	{

@@ -14,23 +14,24 @@
  * limitations under the License.
  */
 
-package consulo.aspnet.module.extension;
+package consulo.aspnet.microsoft.module.extension;
+
+import consulo.aspnet.module.extension.AspNetMutableModuleExtension;
+import consulo.disposer.Disposable;
+import consulo.module.content.layer.ModuleRootLayer;
+import consulo.ui.Component;
+import consulo.ui.annotation.RequiredUIAccess;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-import consulo.disposer.Disposable;
-import consulo.roots.ModuleRootLayer;
-import consulo.ui.Component;
-import consulo.ui.annotation.RequiredUIAccess;
-
 /**
  * @author VISTALL
- * @since 03.07.2015
+ * @since 02.07.2015
  */
-public class MonoAspNetMutableModuleExtension extends MonoAspNetModuleExtension implements AspNetMutableModuleExtension<MonoAspNetModuleExtension>
+public class MicrosoftAspNetMutableModuleExtension extends MicrosoftAspNetModuleExtension implements AspNetMutableModuleExtension<MicrosoftAspNetModuleExtension>
 {
-	public MonoAspNetMutableModuleExtension(@Nonnull String id, @Nonnull ModuleRootLayer moduleRootLayer)
+	public MicrosoftAspNetMutableModuleExtension(@Nonnull String id, @Nonnull ModuleRootLayer moduleRootLayer)
 	{
 		super(id, moduleRootLayer);
 	}
@@ -50,7 +51,7 @@ public class MonoAspNetMutableModuleExtension extends MonoAspNetModuleExtension 
 	}
 
 	@Override
-	public boolean isModified(@Nonnull MonoAspNetModuleExtension originalExtension)
+	public boolean isModified(@Nonnull MicrosoftAspNetModuleExtension originalExtension)
 	{
 		return myIsEnabled != originalExtension.isEnabled();
 	}

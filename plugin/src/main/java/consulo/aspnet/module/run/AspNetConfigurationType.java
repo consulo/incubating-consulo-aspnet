@@ -16,18 +16,19 @@
 
 package consulo.aspnet.module.run;
 
-import com.intellij.execution.configuration.ConfigurationFactoryEx;
-import com.intellij.execution.configurations.ConfigurationTypeBase;
-import com.intellij.execution.configurations.RunConfiguration;
-import com.intellij.execution.configurations.RunConfigurationModule;
-import com.intellij.icons.AllIcons;
-import com.intellij.openapi.module.Module;
-import com.intellij.openapi.module.ModuleManager;
-import com.intellij.openapi.module.ModuleUtilCore;
-import com.intellij.openapi.project.Project;
 import consulo.annotation.access.RequiredReadAction;
+import consulo.annotation.component.ExtensionImpl;
+import consulo.application.AllIcons;
 import consulo.aspnet.module.extension.AspNetModuleExtension;
+import consulo.execution.configuration.ConfigurationFactory;
+import consulo.execution.configuration.ConfigurationTypeBase;
+import consulo.execution.configuration.RunConfiguration;
+import consulo.execution.configuration.RunConfigurationModule;
+import consulo.language.util.ModuleUtilCore;
+import consulo.module.Module;
+import consulo.module.ModuleManager;
 import consulo.module.extension.ModuleExtensionHelper;
+import consulo.project.Project;
 
 import javax.annotation.Nonnull;
 
@@ -35,42 +36,35 @@ import javax.annotation.Nonnull;
  * @author VISTALL
  * @since 02.07.2015
  */
-public class AspNetConfigurationType extends ConfigurationTypeBase
-{
-	public AspNetConfigurationType()
-	{
-		super("#AspNetConfigurationType", "ASP .NET", "", AllIcons.Providers.Microsoft);
-		addFactory(new ConfigurationFactoryEx(this)
-		{
-			@Override
-			public RunConfiguration createTemplateConfiguration(Project project)
-			{
-				return new AspNetConfiguration("Unnamed", new RunConfigurationModule(project), this);
-			}
+@ExtensionImpl
+public class AspNetConfigurationType extends ConfigurationTypeBase {
+    public AspNetConfigurationType() {
+        super("#AspNetConfigurationType", "ASP .NET", "", AllIcons.Providers.Microsoft);
+        addFactory(new ConfigurationFactory(this) {
+            @Override
+            public RunConfiguration createTemplateConfiguration(Project project) {
+                return new AspNetConfiguration("Unnamed", new RunConfigurationModule(project), this);
+            }
 
-			@Override
-			@RequiredReadAction
-			public void onNewConfigurationCreated(@Nonnull RunConfiguration configuration)
-			{
-				AspNetConfiguration dotNetConfiguration = (AspNetConfiguration) configuration;
+            @Override
+            @RequiredReadAction
+            public void onNewConfigurationCreated(@Nonnull RunConfiguration configuration) {
+                AspNetConfiguration dotNetConfiguration = (AspNetConfiguration) configuration;
 
-				for(Module module : ModuleManager.getInstance(configuration.getProject()).getModules())
-				{
-					AspNetModuleExtension extension = ModuleUtilCore.getExtension(module, AspNetModuleExtension.class);
-					if(extension != null)
-					{
-						dotNetConfiguration.setName(module.getName());
-						dotNetConfiguration.setModule(module);
-						break;
-					}
-				}
-			}
+                for (Module module : ModuleManager.getInstance(configuration.getProject()).getModules()) {
+                    AspNetModuleExtension extension = ModuleUtilCore.getExtension(module, AspNetModuleExtension.class);
+                    if (extension != null) {
+                        dotNetConfiguration.setName(module.getName());
+                        dotNetConfiguration.setModule(module);
+                        break;
+                    }
+                }
+            }
 
-			@Override
-			public boolean isApplicable(@Nonnull Project project)
-			{
-				return ModuleExtensionHelper.getInstance(project).hasModuleExtension(AspNetModuleExtension.class);
-			}
-		});
-	}
+            @Override
+            public boolean isApplicable(@Nonnull Project project) {
+                return ModuleExtensionHelper.getInstance(project).hasModuleExtension(AspNetModuleExtension.class);
+            }
+        });
+    }
 }

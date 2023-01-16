@@ -14,32 +14,33 @@
  * limitations under the License.
  */
 
-package consulo.aspnet.bundle;
+package consulo.aspnet.microsoft.bundle;
 
-import java.io.File;
-import java.util.ArrayDeque;
-import java.util.Collection;
+import consulo.annotation.component.ExtensionImpl;
+import consulo.application.AllIcons;
+import consulo.content.bundle.SdkType;
+import consulo.platform.Platform;
+import consulo.ui.image.Image;
+import consulo.util.io.FileUtil;
 
 import javax.annotation.Nonnull;
-import javax.swing.Icon;
-
 import javax.annotation.Nullable;
-import com.intellij.icons.AllIcons;
-import com.intellij.openapi.projectRoots.SdkType;
-import com.intellij.openapi.util.SystemInfo;
-import com.intellij.openapi.util.io.FileUtil;
-import consulo.ui.image.Image;
+import java.io.File;
+import java.nio.file.Path;
+import java.util.ArrayDeque;
+import java.util.Collection;
 
 /**
  * @author VISTALL
  * @since 01.07.2015
  */
+@ExtensionImpl
 public class IISExpressBundleType extends SdkType
 {
 	@Nonnull
 	public static IISExpressBundleType getInstance()
 	{
-		return EP_NAME.findExtension(IISExpressBundleType.class);
+		return EP_NAME.findExtensionOrFail(IISExpressBundleType.class);
 	}
 
 	@Nonnull
@@ -63,7 +64,7 @@ public class IISExpressBundleType extends SdkType
 	@Override
 	public Collection<String> suggestHomePaths()
 	{
-		if(SystemInfo.isWindows)
+		if(Platform.current().os().isWindows())
 		{
 			Collection<String> list = new ArrayDeque<String>(2);
 			String programFiles = System.getenv("ProgramFiles");
@@ -84,7 +85,7 @@ public class IISExpressBundleType extends SdkType
 	@Override
 	public boolean isValidSdkHome(String path)
 	{
-		return SystemInfo.isWindows && new File(getExecutable(path)).exists();
+		return Platform.current().os().isWindows() && new File(getExecutable(path)).exists();
 	}
 
 	@Nullable
@@ -93,7 +94,7 @@ public class IISExpressBundleType extends SdkType
 	{
 		try
 		{
-			return WindowsVersionHelper.getVersion(getExecutable(sdkHome));
+			return Platform.current().os().getWindowsFileVersion(Path.of(getExecutable(sdkHome)));
 		}
 		catch(Exception e)
 		{

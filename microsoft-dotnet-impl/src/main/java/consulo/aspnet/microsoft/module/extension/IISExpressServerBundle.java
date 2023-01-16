@@ -14,18 +14,17 @@
  * limitations under the License.
  */
 
-package consulo.aspnet.module.extension;
+package consulo.aspnet.microsoft.module.extension;
+
+import consulo.aspnet.microsoft.bundle.IISExpressBundleType;
+import consulo.aspnet.module.extension.AspNetServerBundle;
+import consulo.content.bundle.Sdk;
+import consulo.content.bundle.SdkUtil;
+import consulo.module.Module;
+import consulo.process.cmd.GeneralCommandLine;
+import consulo.util.io.FileUtil;
 
 import javax.annotation.Nonnull;
-
-import com.intellij.execution.configurations.GeneralCommandLine;
-import com.intellij.openapi.module.Module;
-import com.intellij.openapi.projectRoots.Sdk;
-import com.intellij.openapi.projectRoots.SdkType;
-import com.intellij.openapi.util.io.FileUtil;
-import consulo.aspnet.bundle.IISExpressBundleType;
-import consulo.awt.TargetAWT;
-import consulo.bundle.SdkUtil;
 
 /**
  * @author VISTALL

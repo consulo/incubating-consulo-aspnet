@@ -16,12 +16,12 @@
 
 package consulo.aspnet.module.extension;
 
-import javax.annotation.Nonnull;
-
-import com.intellij.execution.ExecutionException;
-import com.intellij.execution.configurations.GeneralCommandLine;
-import com.intellij.openapi.module.Module;
+import consulo.module.Module;
+import consulo.process.ExecutionException;
+import consulo.process.cmd.GeneralCommandLine;
 import consulo.ui.image.Image;
+
+import javax.annotation.Nonnull;
 
 /**
  * @author VISTALL

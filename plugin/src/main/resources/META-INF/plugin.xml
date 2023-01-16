@@ -11,10 +11,6 @@
 		<tag>web.server</tag>
 	</tags>
 
-	<depends config-file="consulo.dotnet.microsoft.xml" optional="true">consulo.dotnet.microsoft</depends>
-	<depends config-file="consulo.dotnet.mono.xml" optional="true">consulo.dotnet.mono</depends>
-
-	<extensions defaultExtensionNs="com.intellij">
-		<configurationType implementation="consulo.aspnet.module.run.AspNetConfigurationType" />
-	</extensions>
+	<depends optional="true">consulo.dotnet.microsoft</depends>
+	<depends optional="true">consulo.dotnet.mono</depends>
 </consulo-plugin>

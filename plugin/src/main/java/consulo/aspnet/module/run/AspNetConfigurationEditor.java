@@ -16,63 +16,71 @@
 
 package consulo.aspnet.module.run;
 
-import com.intellij.application.options.ModuleListCellRenderer;
-import com.intellij.openapi.module.Module;
-import com.intellij.openapi.module.ModuleManager;
-import com.intellij.openapi.module.ModuleUtilCore;
-import com.intellij.openapi.options.ConfigurationException;
-import com.intellij.openapi.options.SettingsEditor;
-import com.intellij.openapi.project.Project;
-import com.intellij.util.ui.FormBuilder;
 import consulo.aspnet.module.extension.AspNetModuleExtension;
+import consulo.configurable.ConfigurationException;
+import consulo.execution.configuration.ui.SettingsEditor;
+import consulo.language.util.ModuleUtilCore;
+import consulo.localize.LocalizeValue;
+import consulo.module.Module;
+import consulo.module.ModuleManager;
+import consulo.project.Project;
+import consulo.ui.ComboBox;
+import consulo.ui.Component;
 import consulo.ui.annotation.RequiredUIAccess;
+import consulo.ui.layout.VerticalLayout;
+import consulo.ui.util.LabeledBuilder;
 
-import javax.annotation.Nonnull;
-import javax.swing.*;
+import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author VISTALL
  * @since 02.07.2015
  */
-public class AspNetConfigurationEditor extends SettingsEditor<AspNetConfiguration>
-{
-	private JComboBox myModuleComboBox;
-	private Project myProject;
+public class AspNetConfigurationEditor extends SettingsEditor<AspNetConfiguration> {
+    private ComboBox<Module> myModuleComboBox;
+    private Project myProject;
 
-	public AspNetConfigurationEditor(Project project)
-	{
-		myProject = project;
-	}
+    public AspNetConfigurationEditor(Project project) {
+        myProject = project;
+    }
 
-	@Override
-	protected void resetEditorFrom(AspNetConfiguration runConfiguration)
-	{
-		myModuleComboBox.setSelectedItem(runConfiguration.getConfigurationModule().getModule());
-	}
+    @Override
+    protected void resetEditorFrom(AspNetConfiguration runConfiguration) {
+        myModuleComboBox.setValue(runConfiguration.getConfigurationModule().getModule());
+    }
 
-	@Override
-	protected void applyEditorTo(AspNetConfiguration runConfiguration) throws ConfigurationException
-	{
-		runConfiguration.getConfigurationModule().setModule((Module) myModuleComboBox.getSelectedItem());
-	}
+    @Override
+    protected void applyEditorTo(AspNetConfiguration runConfiguration) throws ConfigurationException {
+        runConfiguration.getConfigurationModule().setModule((Module) myModuleComboBox.getValue());
+    }
 
-	@Nonnull
-	@Override
-	@RequiredUIAccess
-	protected JComponent createEditor()
-	{
-		myModuleComboBox = new JComboBox();
-		myModuleComboBox.setRenderer(new ModuleListCellRenderer());
-		for(Module module : ModuleManager.getInstance(myProject).getModules())
-		{
-			if(ModuleUtilCore.getExtension(module, AspNetModuleExtension.class) != null)
-			{
-				myModuleComboBox.addItem(module);
-			}
-		}
+    @RequiredUIAccess
+    @Nullable
+    @Override
+    protected Component createUIComponent() {
+        List<Module> modules = new ArrayList<>();
+        for (Module module : ModuleManager.getInstance(myProject).getModules()) {
+            if (ModuleUtilCore.getExtension(module, AspNetModuleExtension.class) != null) {
+                modules.add(module);
+            }
+        }
 
-		FormBuilder formBuilder = FormBuilder.createFormBuilder();
-		formBuilder.addLabeledComponent("Module", myModuleComboBox);
-		return formBuilder.getPanel();
-	}
+        myModuleComboBox = ComboBox.create(modules);
+        myModuleComboBox.setRender((presentation, i, module) -> {
+            if (module == null) {
+                presentation.append(LocalizeValue.localizeTODO("<none>"));
+            }
+            else {
+                presentation.withIcon(ModuleManager.getInstance(module.getProject()).getModuleIcon(module));
+                presentation.append(module.getName());
+            }
+        });
+
+        VerticalLayout root = VerticalLayout.create();
+        root.add(LabeledBuilder.filled(LocalizeValue.localizeTODO("Module"), myModuleComboBox));
+
+        return root;
+    }
 }

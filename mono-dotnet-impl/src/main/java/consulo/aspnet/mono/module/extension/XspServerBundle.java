@@ -14,15 +14,16 @@
  * limitations under the License.
  */
 
-package consulo.aspnet.module.extension;
+package consulo.aspnet.mono.module.extension;
 
-import com.intellij.execution.ExecutionException;
-import com.intellij.execution.configurations.GeneralCommandLine;
-import com.intellij.openapi.module.Module;
-import com.intellij.openapi.projectRoots.Sdk;
-import com.intellij.openapi.util.text.StringUtil;
-import consulo.dotnet.mono.icon.MonoDotNetIconGroup;
+import consulo.aspnet.module.extension.AspNetServerBundle;
+import consulo.content.bundle.Sdk;
+import consulo.module.Module;
+import consulo.mono.dotnet.icon.MonoDotNetIconGroup;
 import consulo.mono.dotnet.module.extension.MonoDotNetModuleExtension;
+import consulo.process.ExecutionException;
+import consulo.process.cmd.GeneralCommandLine;
+import consulo.util.lang.StringUtil;
 
 import javax.annotation.Nonnull;
 
@@ -46,7 +47,7 @@ public class XspServerBundle extends AspNetServerBundle
 		GeneralCommandLine commandLine = MonoDotNetModuleExtension.createDefaultCommandLineImpl(mySdk, null, mySdk.getHomePath() + "/xsp4.exe");
 		commandLine.addParameter("--nonstop");
 		commandLine.addParameter("--root");
-		commandLine.addParameter(StringUtil.QUOTER.fun(module.getModuleDirPath()));
+		commandLine.addParameter(StringUtil.QUOTER.apply(module.getModuleDirPath()));
 		commandLine.addParameter("--verbose");
 		commandLine.addParameter("--port");
 		commandLine.addParameter(String.valueOf(8081));

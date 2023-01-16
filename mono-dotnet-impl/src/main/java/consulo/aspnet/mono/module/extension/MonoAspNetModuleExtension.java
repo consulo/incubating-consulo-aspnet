@@ -14,23 +14,24 @@
  * limitations under the License.
  */
 
-package consulo.aspnet.module.extension;
+package consulo.aspnet.mono.module.extension;
 
-import java.util.Arrays;
-import java.util.List;
+import consulo.aspnet.module.extension.AspNetModuleExtension;
+import consulo.aspnet.module.extension.AspNetServerBundle;
+import consulo.content.bundle.Sdk;
+import consulo.dotnet.module.extension.DotNetModuleExtension;
+import consulo.module.content.layer.ModuleRootLayer;
+import consulo.module.content.layer.extension.ModuleExtensionBase;
 
 import javax.annotation.Nonnull;
-
-import com.intellij.openapi.projectRoots.Sdk;
-import consulo.dotnet.module.extension.DotNetModuleExtension;
-import consulo.module.extension.impl.ModuleExtensionImpl;
-import consulo.roots.ModuleRootLayer;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * @author VISTALL
  * @since 02.07.2015
  */
-public class MonoAspNetModuleExtension extends ModuleExtensionImpl<MonoAspNetModuleExtension> implements AspNetModuleExtension<MonoAspNetModuleExtension>
+public class MonoAspNetModuleExtension extends ModuleExtensionBase<MonoAspNetModuleExtension> implements AspNetModuleExtension<MonoAspNetModuleExtension>
 {
 	public MonoAspNetModuleExtension(@Nonnull String id, @Nonnull ModuleRootLayer moduleRootLayer)
 	{
