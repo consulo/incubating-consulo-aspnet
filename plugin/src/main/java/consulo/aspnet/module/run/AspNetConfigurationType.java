@@ -18,16 +18,16 @@ package consulo.aspnet.module.run;
 
 import consulo.annotation.access.RequiredReadAction;
 import consulo.annotation.component.ExtensionImpl;
-import consulo.application.AllIcons;
+import consulo.aspnet.localize.AspNetLocalize;
 import consulo.aspnet.module.extension.AspNetModuleExtension;
-import consulo.execution.configuration.ConfigurationFactory;
-import consulo.execution.configuration.ConfigurationTypeBase;
 import consulo.execution.configuration.RunConfiguration;
 import consulo.execution.configuration.RunConfigurationModule;
+import consulo.execution.configuration.SimpleConfigurationType;
 import consulo.language.util.ModuleUtilCore;
 import consulo.module.Module;
 import consulo.module.ModuleManager;
 import consulo.module.extension.ModuleExtensionHelper;
+import consulo.platform.base.icon.PlatformIconGroup;
 import consulo.project.Project;
 
 import javax.annotation.Nonnull;
@@ -37,34 +37,40 @@ import javax.annotation.Nonnull;
  * @since 02.07.2015
  */
 @ExtensionImpl
-public class AspNetConfigurationType extends ConfigurationTypeBase {
-    public AspNetConfigurationType() {
-        super("#AspNetConfigurationType", "ASP .NET", "", AllIcons.Providers.Microsoft);
-        addFactory(new ConfigurationFactory(this) {
-            @Override
-            public RunConfiguration createTemplateConfiguration(Project project) {
-                return new AspNetConfiguration("Unnamed", new RunConfigurationModule(project), this);
-            }
+public class AspNetConfigurationType extends SimpleConfigurationType
+{
+	public AspNetConfigurationType()
+	{
+		super("#AspNetConfigurationType", AspNetLocalize.aspNetConfigurationName(),  PlatformIconGroup.providersMicrosoft());
+	}
 
-            @Override
-            @RequiredReadAction
-            public void onNewConfigurationCreated(@Nonnull RunConfiguration configuration) {
-                AspNetConfiguration dotNetConfiguration = (AspNetConfiguration) configuration;
+	@Override
+	public RunConfiguration createTemplateConfiguration(Project project)
+	{
+		return new AspNetConfiguration("Unnamed", new RunConfigurationModule(project), this);
+	}
 
-                for (Module module : ModuleManager.getInstance(configuration.getProject()).getModules()) {
-                    AspNetModuleExtension extension = ModuleUtilCore.getExtension(module, AspNetModuleExtension.class);
-                    if (extension != null) {
-                        dotNetConfiguration.setName(module.getName());
-                        dotNetConfiguration.setModule(module);
-                        break;
-                    }
-                }
-            }
+	@Override
+	@RequiredReadAction
+	public void onNewConfigurationCreated(@Nonnull RunConfiguration configuration)
+	{
+		AspNetConfiguration dotNetConfiguration = (AspNetConfiguration) configuration;
 
-            @Override
-            public boolean isApplicable(@Nonnull Project project) {
-                return ModuleExtensionHelper.getInstance(project).hasModuleExtension(AspNetModuleExtension.class);
-            }
-        });
-    }
+		for(Module module : ModuleManager.getInstance(configuration.getProject()).getModules())
+		{
+			AspNetModuleExtension extension = ModuleUtilCore.getExtension(module, AspNetModuleExtension.class);
+			if(extension != null)
+			{
+				dotNetConfiguration.setName(module.getName());
+				dotNetConfiguration.setModule(module);
+				break;
+			}
+		}
+	}
+
+	@Override
+	public boolean isApplicable(@Nonnull Project project)
+	{
+		return ModuleExtensionHelper.getInstance(project).hasModuleExtension(AspNetModuleExtension.class);
+	}
 }
