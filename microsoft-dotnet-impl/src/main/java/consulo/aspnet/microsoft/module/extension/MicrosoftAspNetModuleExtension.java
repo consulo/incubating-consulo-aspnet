@@ -45,7 +45,7 @@ public class MicrosoftAspNetModuleExtension extends ModuleExtensionBase<Microsof
 	public List<AspNetServerBundle> getBundles(DotNetModuleExtension dotNetModuleExtension, Sdk t)
 	{
 		List<Sdk> sdksOfType = SdkTable.getInstance().getSdksOfType(IISExpressBundleType.getInstance());
-		List<AspNetServerBundle> list = new ArrayList<AspNetServerBundle>(sdksOfType.size());
+		List<AspNetServerBundle> list = new ArrayList<>(sdksOfType.size());
 		for(Sdk sdk : sdksOfType)
 		{
 			list.add(new IISExpressServerBundle(sdk));

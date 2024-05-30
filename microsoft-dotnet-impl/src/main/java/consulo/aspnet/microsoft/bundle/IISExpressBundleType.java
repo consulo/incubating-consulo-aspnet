@@ -18,6 +18,7 @@ package consulo.aspnet.microsoft.bundle;
 
 import consulo.annotation.component.ExtensionImpl;
 import consulo.application.AllIcons;
+import consulo.aspnet.icon.AspNetIconGroup;
 import consulo.content.bundle.SdkType;
 import consulo.platform.Platform;
 import consulo.ui.image.Image;
@@ -94,7 +95,7 @@ public class IISExpressBundleType extends SdkType
 	{
 		try
 		{
-			return Platform.current().os().getWindowsFileVersion(Path.of(getExecutable(sdkHome)));
+			return Platform.current().os().asWindows().getWindowsFileVersion(Path.of(getExecutable(sdkHome)));
 		}
 		catch(Exception e)
 		{
@@ -134,6 +135,6 @@ public class IISExpressBundleType extends SdkType
 	@Override
 	public Image getIcon()
 	{
-		return AllIcons.Providers.Microsoft;
+		return AspNetIconGroup.microsoft();
 	}
 }

@@ -18,6 +18,7 @@ package consulo.aspnet.module.run;
 
 import consulo.annotation.access.RequiredReadAction;
 import consulo.annotation.component.ExtensionImpl;
+import consulo.aspnet.icon.AspNetIconGroup;
 import consulo.aspnet.localize.AspNetLocalize;
 import consulo.aspnet.module.extension.AspNetModuleExtension;
 import consulo.execution.configuration.RunConfiguration;
@@ -27,7 +28,6 @@ import consulo.language.util.ModuleUtilCore;
 import consulo.module.Module;
 import consulo.module.ModuleManager;
 import consulo.module.extension.ModuleExtensionHelper;
-import consulo.platform.base.icon.PlatformIconGroup;
 import consulo.project.Project;
 
 import javax.annotation.Nonnull;
@@ -41,7 +41,7 @@ public class AspNetConfigurationType extends SimpleConfigurationType
 {
 	public AspNetConfigurationType()
 	{
-		super("#AspNetConfigurationType", AspNetLocalize.aspNetConfigurationName(),  PlatformIconGroup.providersMicrosoft());
+		super("#AspNetConfigurationType", AspNetLocalize.aspNetConfigurationName(), AspNetIconGroup.microsoft());
 	}
 
 	@Override
