@@ -21,6 +21,8 @@ import consulo.application.AllIcons;
 import consulo.aspnet.icon.AspNetIconGroup;
 import consulo.content.bundle.SdkType;
 import consulo.platform.Platform;
+import consulo.platform.PlatformOperatingSystem;
+import consulo.platform.os.WindowsOperatingSystem;
 import consulo.ui.image.Image;
 import consulo.util.io.FileUtil;
 
@@ -95,12 +97,16 @@ public class IISExpressBundleType extends SdkType
 	{
 		try
 		{
-			return Platform.current().os().asWindows().getWindowsFileVersion(Path.of(getExecutable(sdkHome)));
+			PlatformOperatingSystem os = Platform.current().os();
+			if(os instanceof WindowsOperatingSystem win)
+			{
+				return win.getWindowsFileVersion(Path.of(getExecutable(sdkHome)));
+			}
 		}
-		catch(Exception e)
+		catch(Exception ignored)
 		{
-			return "0.0.0.0";
 		}
+		return "0.0.0.0";
 	}
 
 	@Override
