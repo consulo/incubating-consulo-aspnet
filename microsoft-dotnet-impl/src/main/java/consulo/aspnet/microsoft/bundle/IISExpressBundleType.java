@@ -20,6 +20,7 @@ import consulo.annotation.component.ExtensionImpl;
 import consulo.application.Application;
 import consulo.aspnet.icon.AspNetIconGroup;
 import consulo.content.bundle.SdkType;
+import consulo.localize.LocalizeValue;
 import consulo.platform.Platform;
 import consulo.platform.PlatformOperatingSystem;
 import consulo.platform.os.WindowsOperatingSystem;
@@ -41,7 +42,7 @@ import java.util.Collection;
 public class IISExpressBundleType extends SdkType {
     @Nonnull
     public static IISExpressBundleType getInstance() {
-        return Application.get().getExtensionPoint(IISExpressBundleType.class).findExtensionOrFail(IISExpressBundleType.class);
+        return Application.get().getExtensionPoint(SdkType.class).findExtensionOrFail(IISExpressBundleType.class);
     }
 
     @Nonnull
@@ -50,7 +51,7 @@ public class IISExpressBundleType extends SdkType {
     }
 
     public IISExpressBundleType() {
-        super("IIS_EXPRESS_BUNDLE");
+        super("IIS_EXPRESS_BUNDLE", LocalizeValue.localizeTODO("IIS Express"), AspNetIconGroup.microsoft());
     }
 
     @Override
@@ -105,22 +106,10 @@ public class IISExpressBundleType extends SdkType {
             }
         }
         StringBuilder builder = new StringBuilder();
-        builder.append(getPresentableName()).append(" ").append(getVersionString(sdkHome));
+        builder.append(getDisplayName().get()).append(" ").append(getVersionString(sdkHome));
         if (suffix != null) {
             builder.append(suffix);
         }
         return builder.toString();
-    }
-
-    @Nonnull
-    @Override
-    public String getPresentableName() {
-        return "IIS Express";
-    }
-
-    @Nullable
-    @Override
-    public Image getIcon() {
-        return AspNetIconGroup.microsoft();
     }
 }

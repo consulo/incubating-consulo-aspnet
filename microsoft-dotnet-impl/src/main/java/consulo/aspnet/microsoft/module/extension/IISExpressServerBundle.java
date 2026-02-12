@@ -23,32 +23,28 @@ import consulo.content.bundle.SdkUtil;
 import consulo.module.Module;
 import consulo.process.cmd.GeneralCommandLine;
 import consulo.util.io.FileUtil;
-
 import jakarta.annotation.Nonnull;
 
 /**
  * @author VISTALL
  * @since 02.07.2015
  */
-public class IISExpressServerBundle extends AspNetServerBundle
-{
-	private Sdk mySdk;
+public class IISExpressServerBundle extends AspNetServerBundle {
+    private Sdk mySdk;
 
-	public IISExpressServerBundle(@Nonnull Sdk sdk)
-	{
-		super(SdkUtil.getIcon(sdk), sdk.getSdkType().getName());
-		mySdk = sdk;
-	}
+    public IISExpressServerBundle(@Nonnull Sdk sdk) {
+        super(SdkUtil.getIcon(sdk), sdk.getSdkType().getId());
+        mySdk = sdk;
+    }
 
-	@Override
-	public GeneralCommandLine createCommandLine(@Nonnull Module module)
-	{
-		GeneralCommandLine commandLine = new GeneralCommandLine();
-		commandLine.setExePath(IISExpressBundleType.getExecutable(mySdk.getHomePath()));
-		commandLine.setWorkDirectory(mySdk.getHomePath());
-		commandLine.addParameter("/path:" + FileUtil.toSystemDependentName(module.getModuleDirPath()));
-		commandLine.addParameter("/port:8081");
-		commandLine.addParameter("/systray:false");
-		return commandLine;
-	}
+    @Override
+    public GeneralCommandLine createCommandLine(@Nonnull Module module) {
+        GeneralCommandLine commandLine = new GeneralCommandLine();
+        commandLine.setExePath(IISExpressBundleType.getExecutable(mySdk.getHomePath()));
+        commandLine.setWorkDirectory(mySdk.getHomePath());
+        commandLine.addParameter("/path:" + FileUtil.toSystemDependentName(module.getModuleDirPath()));
+        commandLine.addParameter("/port:8081");
+        commandLine.addParameter("/systray:false");
+        return commandLine;
+    }
 }
