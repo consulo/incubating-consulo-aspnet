@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package consulo.aspnet.module.run;
 
 import consulo.aspnet.module.extension.AspNetModuleExtension;
@@ -36,7 +35,7 @@ import java.util.List;
 
 /**
  * @author VISTALL
- * @since 02.07.2015
+ * @since 2015-07-02
  */
 public class AspNetConfigurationEditor extends SettingsEditor<AspNetConfiguration> {
     private ComboBox<Module> myModuleComboBox;
@@ -47,18 +46,19 @@ public class AspNetConfigurationEditor extends SettingsEditor<AspNetConfiguratio
     }
 
     @Override
+    @RequiredUIAccess
     protected void resetEditorFrom(AspNetConfiguration runConfiguration) {
         myModuleComboBox.setValue(runConfiguration.getConfigurationModule().getModule());
     }
 
     @Override
     protected void applyEditorTo(AspNetConfiguration runConfiguration) throws ConfigurationException {
-        runConfiguration.getConfigurationModule().setModule((Module) myModuleComboBox.getValue());
+        runConfiguration.getConfigurationModule().setModule(myModuleComboBox.getValue());
     }
 
-    @RequiredUIAccess
     @Nullable
     @Override
+    @RequiredUIAccess
     protected Component createUIComponent() {
         List<Module> modules = new ArrayList<>();
         for (Module module : ModuleManager.getInstance(myProject).getModules()) {
@@ -68,7 +68,7 @@ public class AspNetConfigurationEditor extends SettingsEditor<AspNetConfiguratio
         }
 
         myModuleComboBox = ComboBox.create(modules);
-        myModuleComboBox.setRender((presentation, i, module) -> {
+        myModuleComboBox.setRenderer((presentation, i, module) -> {
             if (module == null) {
                 presentation.append(LocalizeValue.localizeTODO("<none>"));
             }
