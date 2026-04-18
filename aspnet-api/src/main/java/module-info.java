@@ -4,7 +4,11 @@
  */
 module consulo.aspnet.api
 {
-	requires transitive consulo.ide.api;
+	requires consulo.application.content.api;
+	requires transitive consulo.module.api;
+	requires consulo.process.api;
+	requires consulo.ui.api;
+
 	requires transitive consulo.dotnet.api;
 
 	exports consulo.aspnet.icon;
