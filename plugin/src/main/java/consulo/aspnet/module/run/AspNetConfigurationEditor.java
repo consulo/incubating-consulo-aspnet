@@ -68,7 +68,8 @@ public class AspNetConfigurationEditor extends SettingsEditor<AspNetConfiguratio
         }
 
         myModuleComboBox = ComboBox.create(modules);
-        myModuleComboBox.setRenderer((presentation, i, module) -> {
+        myModuleComboBox.setRender((presentation, item) -> {
+            Module module = item.getValue();
             if (module == null) {
                 presentation.append(LocalizeValue.localizeTODO("<none>"));
             }
