@@ -28,8 +28,8 @@ import consulo.ui.Component;
 import consulo.ui.annotation.RequiredUIAccess;
 import consulo.ui.layout.VerticalLayout;
 import consulo.ui.util.LabeledBuilder;
-
 import jakarta.annotation.Nullable;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -68,7 +68,7 @@ public class AspNetConfigurationEditor extends SettingsEditor<AspNetConfiguratio
         }
 
         myModuleComboBox = ComboBox.create(modules);
-        myModuleComboBox.setRender((presentation, item) -> {
+        myModuleComboBox.setRenderer((presentation, item) -> {
             Module module = item.getValue();
             if (module == null) {
                 presentation.append(LocalizeValue.localizeTODO("<none>"));
