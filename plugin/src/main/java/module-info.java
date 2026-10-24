@@ -16,5 +16,5 @@ module consulo.aspnet {
 
     requires consulo.aspnet.api;
 
-    opens consulo.aspnet.module.run to consulo.util.xml.serializer;
+    opens consulo.aspnet.module.run to consulo.util.xml.serializer, consulo.execution.api;
 }

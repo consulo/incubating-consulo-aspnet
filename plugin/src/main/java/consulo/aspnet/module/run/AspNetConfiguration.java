@@ -21,8 +21,6 @@ import consulo.aspnet.module.extension.AspNetServerBundle;
 import consulo.content.bundle.Sdk;
 import consulo.dotnet.module.extension.DotNetModuleExtension;
 import consulo.execution.configuration.*;
-import consulo.execution.configuration.ui.SettingsEditor;
-import consulo.execution.configuration.ui.SettingsEditorGroup;
 import consulo.execution.executor.Executor;
 import consulo.execution.runner.ExecutionEnvironment;
 import consulo.language.util.ModuleUtilCore;
@@ -31,10 +29,6 @@ import consulo.module.ModuleManager;
 import consulo.process.ExecutionException;
 import consulo.process.ProcessHandler;
 import consulo.process.local.ProcessHandlerFactory;
-import consulo.util.xml.serializer.InvalidDataException;
-import consulo.util.xml.serializer.WriteExternalException;
-import consulo.util.xml.serializer.XmlSerializer;
-import org.jdom.Element;
 
 import jakarta.annotation.Nonnull;
 import jakarta.annotation.Nullable;
@@ -67,26 +61,8 @@ public class AspNetConfiguration extends ModuleBasedConfiguration<RunConfigurati
     }
 
     @Override
-    public void readExternal(Element element) throws InvalidDataException {
-        super.readExternal(element);
-
-        XmlSerializer.deserializeInto(this, element);
-    }
-
-    @Override
-    public void writeExternal(Element element) throws WriteExternalException {
-        super.writeExternal(element);
-
-        XmlSerializer.serializeInto(this, element);
-    }
-
-    @Nonnull
-    @Override
-    @SuppressWarnings("unchecked")
-    public SettingsEditor<? extends RunConfiguration> getConfigurationEditor() {
-        SettingsEditorGroup group = new SettingsEditorGroup();
-        group.addEditor("General", new AspNetConfigurationEditor(getProject()));
-        return group;
+    protected Class<AspNetConfigurationOptions> getOptionsClass() {
+        return AspNetConfigurationOptions.class;
     }
 
     @Nullable
